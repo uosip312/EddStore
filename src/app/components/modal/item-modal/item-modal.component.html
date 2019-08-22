@@ -1,0 +1,57 @@
+<div class="modal fade" id="modalItem" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">
+                    {{!this.dataApi.selectedItem.id ? 'Nuevo Articulo' : 'Actualizar Articulo'}}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form #formItem="ngForm" (ngSubmit)="onSaveItem(formItem)">
+                    <input type="hidden" name="id" [(ngModel)]="this.dataApi.selectedItem.id">
+                    <input type="hidden" name="userUid" [value]="userUid">
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Nombre</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="this.dataApi.selectedItem.name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Precio</label>
+                            <input type="text" name="price" class="form-control" placeholder="0.00RD$" [(ngModel)]="this.dataApi.selectedItem.price">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="offer">Oferta</label>
+                            <select name="offer" class="form-control" [(ngModel)]="this.dataApi.selectedItem.offer">
+                                    <option value="1">Si</option>
+                                    <option value="0">No</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="photo">Foto</label>
+                            <input type="text" name="photo" class="form-control" placeholder="Link" [(ngModel)]="this.dataApi.selectedItem.photo">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="description" class="col-form-label">Descripción</label>
+                            <textarea class="form-control" name="description" [(ngModel)]="this.dataApi.selectedItem.description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="characteristics" class="col-form-label">Caracteristicas</label>
+                        <textarea class="form-control" name="characteristics" [(ngModel)]="this.dataApi.selectedItem.characteristics"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cerrar</button>
+                        <button type="submit" class="btn btn-primary">
+                                {{!this.dataApi.selectedItem.id ? 'Agregar' : 'Actualizar'}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

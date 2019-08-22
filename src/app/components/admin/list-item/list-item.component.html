@@ -1,0 +1,53 @@
+<section class="row">
+    <div class="col">
+        <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalItem">
+                <i class="fa fa-plus-circle"></i>
+                Agregar Articulo</button>
+        <div>
+            <h1>Listado de Articulos</h1>
+            <input class="form-control mr-sm-2 searchInput" style="border-radius: 10px" [(ngModel)]="searchText" placeholder="Buscar">
+        </div>
+        <hr>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Articulo</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Oferta</th>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items | search : searchText; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.offer == '1' ? 'Si' : 'No'}}</td>
+                    <td *ngIf="item.userUid == userUid || isAdmin == true; else noOwner">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalItem" (click)="onPreUpdateItem(item)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </td>
+                    <ng-template #noOwner>
+                        <td>
+                        </td>
+                    </ng-template>
+                    <td *ngIf="isAdmin == true; else noAdmin">
+                        <button class="btn btn-danger" (click)="onDeleteItem(item.id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                    <ng-template #noAdmin>
+                        <td>
+                        </td>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<app-item-modal [userUid]="userUid"></app-item-modal>

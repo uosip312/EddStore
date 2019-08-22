@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+#items {
+    border-radius: 0.25rem;
+    background: #f9f9f9 !important;
+}
+
+section {
+    padding: 10px 0;
+}
+
+#items .card {
+    border: none;
+    background: #fff;
+}
+
+.card_item {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.card_item.card {
+    min-height: 312px;
+}
+
+p.card-text,
+h4.card-title {
+    min-height: 96px !important;
+}
+
+.card-title {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.card_item .card .card-body img {
+    width: 200px;
+    height: 200px;
+    border-radius: 30%;
+}
+
+div.container-price {
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,17 @@
+<ul class="nav flex-column mt-5 ">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/">Inicio</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/offers">Ofertas</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/admin/list-item">Inventario</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/user/list-users">Usuarios</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/user/profile">Perfil</a>
+    </li>
+</ul>
