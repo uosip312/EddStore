@@ -24,4 +24,7 @@ export class UserModalComponent implements OnInit {
     userForm.resetForm();
     this.btnClose.nativeElement.click();
   }
+  onCloseModal(userForm: NgForm): void {
+    userForm.resetForm();
+  }
 }

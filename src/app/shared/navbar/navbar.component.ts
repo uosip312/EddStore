@@ -9,24 +9,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private afsAuth: AngularFireAuth) { }
+  constructor(public authService: AuthService, private afsAuth: AngularFireAuth) { }
   public app_name: string = 'EddStore';
-  public isLogged: boolean = false;
+
   ngOnInit() {
-    this.getCurrentUser();
-  }
-
-  getCurrentUser() {
-    this.authService.isAuth().subscribe( auth => {
-      if (auth) {
-        this.isLogged = true;
-      } else {
-        this.isLogged = false;
-      }
-    })
-  }
-
-  onLogout() {
-    this.afsAuth.auth.signOut();
   }
 }

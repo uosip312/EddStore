@@ -7,7 +7,6 @@ import { ListItemComponent } from './components/admin/list-item/list-item.compon
 import { DetailsItemComponent } from './components/details-item/details-item.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { OffersComponent } from './components/offers/offers.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { ProfileComponent } from './components/users/profile/profile.component';
 import { RegisterComponent } from './components/users/register/register.component';
@@ -25,6 +24,9 @@ import { ListUserComponent } from './components/admin/list-user/list-user.compon
 import { ItemModalComponent } from './components/modal/item-modal/item-modal.component';
 import { UserModalComponent } from './components/modal/user-modal/user-modal.component';
 import { SearchPipe } from './pipe/search.pipe';
+import { VerifyEmailComponent } from './components/users/verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './components/users/forgot-password/forgot-password.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,6 @@ import { SearchPipe } from './pipe/search.pipe';
     DetailsItemComponent,
     HomeComponent,
     NavbarComponent,
-    OffersComponent,
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
@@ -43,7 +44,9 @@ import { SearchPipe } from './pipe/search.pipe';
     ListUserComponent,
     ItemModalComponent,
     UserModalComponent,
-    SearchPipe
+    SearchPipe,
+    VerifyEmailComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import { SearchPipe } from './pipe/search.pipe';
     AngularFireDatabaseModule,
     AngularFireStorageModule
   ],
-  providers: [AngularFireAuth, AngularFirestore],
+  providers: [AngularFireAuth, AngularFirestore, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

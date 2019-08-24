@@ -11,35 +11,8 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, private authService: AuthService) { }
-  public email: string = '';
-  public password: string = '';
-  ngOnInit() {
-  }
-  onLogin(): void {
-    this.authService.loginEmailUser(this.email, this.password)
-      .then((res) => {
-        this.onLoginRedirect();
-    }).catch(err => console.log('err', err.message));
-  }
-  onLoginGoogle(): void {
-    this.authService.loginGoogleUser()
-      .then((res) => {
-        this.onLoginRedirect();
-      }).catch(err => console.log('err', err.message));
-  }
+  constructor(public authService: AuthService) { }
 
-  onLoginFacebook(): void {
-    this.authService.loginFacebookUser()
-      .then((res) => {
-        this.onLoginRedirect();
-      }).catch(err => console.log('err', err.message));
-  }
-  onLogout(): void {
-    this.authService.logoutUser();
-    this.router.navigate(['']);
-  }
-  onLoginRedirect(): void {
-    this.router.navigate(['admin/list-item']);
+  ngOnInit() {
   }
 }

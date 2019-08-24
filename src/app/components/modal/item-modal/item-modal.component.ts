@@ -19,6 +19,7 @@ export class ItemModalComponent implements OnInit {
     if (itemForm.value.id == null) {
       // New
       itemForm.value.userUid = this.userUid;
+      this.dataApi.addItem(itemForm.value);
     } else {
       // Update
       this.dataApi.updateItem(itemForm.value);
@@ -26,5 +27,7 @@ export class ItemModalComponent implements OnInit {
     itemForm.resetForm();
     this.btnClose.nativeElement.click();
   }
-
+  onCloseModal(itemForm: NgForm): void {
+    itemForm.resetForm();
+  }
 }

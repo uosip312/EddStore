@@ -9,24 +9,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private afsAuth: AngularFireAuth) { }
-  public isLogged: boolean = false;
+  constructor(public authService: AuthService, private afsAuth: AngularFireAuth) { }
   ngOnInit() {
-    this.getCurrentUser();
-  }
-
-  getCurrentUser() {
-    this.authService.isAuth().subscribe( auth => {
-      if (auth) {
-        this.isLogged = true;
-      } else {
-        this.isLogged = false;
-      }
-    })
-  }
-
-  onLogout() {
-    this.afsAuth.auth.signOut();
   }
 
 }

@@ -17,9 +17,9 @@
             <tbody>
                 <tr *ngFor="let user of users; index as i">
                     <th scope="row">{{i+1}}</th>
-                    <td>{{user.name}}</td>
+                    <td>{{user.fullName}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.roles == '1' ? 'Admin' : user.roles == '2' ? 'Editor' : 'Usuario'}}</td>
+                    <td>{{user.roles == {admin: true} ? 'Admin' : user.roles == {editor: true} ? 'Editor' : 'Usuario'}}</td>
                     <td>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#modalUser" (click)="onPreUpdateUser(user)">
                             <i class="fa fa-edit"></i>
@@ -30,7 +30,7 @@
                         </td>
                     </ng-template>
                     <td>
-                        <button class="btn btn-danger" (click)="onDeleteUser(user.id)">
+                        <button class="btn btn-danger" (click)="onDeleteUser(user.uid)">
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>

@@ -1,8 +1,14 @@
+export interface Roles {
+    reader?: boolean;
+    editor?: boolean;
+    admin?: boolean;
+}
+
 export interface UserInterface {
-    id?: string;
-    name?: string;
+    uid?: string;
+    fullName?: string;
     email?: string;
-    password?: string;
     photoUrl?: string;
-    roles?: string;
+    emailVerified: boolean;
+    roles: Roles;
 }

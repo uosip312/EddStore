@@ -14,16 +14,20 @@ export class UserApiService {
   private users: Observable<UserInterface[]>;
   private userDoc: AngularFirestoreDocument<UserInterface>;
   private user: Observable<UserInterface>;
-   public selectedUser: UserInterface = {
-    id: null,
+  public selectedUser: UserInterface = {
+    uid: null,
+    emailVerified: null,
+    roles: null,
   };
+
+
   getAllUsers() {
     this.usersCollection = this.afs.collection<UserInterface>('users');
     return this.users = this.usersCollection.snapshotChanges()
     .pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as UserInterface;
-        data.id = action.payload.doc.id;
+        data.uid = action.payload.doc.id;
         return data;
       });
     }));
@@ -33,7 +37,7 @@ export class UserApiService {
     this.usersCollection.add(user);
   }
   updateUser(user: UserInterface): void {
-    const idUser = user.id;
+    const idUser = user.uid;
     this.userDoc = this.afs.doc<UserInterface>(`users/${idUser}`);
     this.userDoc.update(user);
   }

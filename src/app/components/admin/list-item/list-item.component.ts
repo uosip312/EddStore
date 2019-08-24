@@ -4,8 +4,8 @@ import { ItemInterface } from '../../../models/item';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { UserInterface } from '../../../models/user';
 import { auth } from 'firebase/app';
+import { UserInterface } from '../../../models/user';
 
 @Component({
   selector: 'app-list-item',
@@ -30,7 +30,8 @@ export class ListItemComponent implements OnInit {
       if (auth) {
         this.userUid = auth.uid;
         this.authService.isUserAdmin(this.userUid).subscribe(userRole => {
-          this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('1');
+          this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
+          this.isAdmin = true;
         });
       }
     });

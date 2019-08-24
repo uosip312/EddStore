@@ -2,17 +2,17 @@
     <div class="row mt-5">
         <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card">
             <div class="row">
-                <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+                <div class="col-lg-12 col-sm-12 col-12 profile-header">
+                    <h1 class="h2">Perfil del Usuario</h1>
+                </div>
             </div>
-            <div class="row user-details">
+            <div class="row user-details" *ngIf="authService.userData as user">
                 <div class="col-12">
-                    <img src="{{user.photoUrl}}" class="rounded-circle img-thumbnail" alt="profile">
-                    <h5>{{user.name}}</h5>
-                    <p>
-                        {{user.email}}
-                    </p>
-                    <hr>
-                    <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores suscipit itaque minima quae.</span>
+                    <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+                    <h1>Hola: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                    <p>User ID: <strong>{{user.uid}}</strong></p>
+                    <p>Email: <strong>{{user.email}}</strong></p>
+                    <p>Email Verificado: <strong>{{user.emailVerified}}</strong></p>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
         </button>
             </div>
             <div class="modal-body">
-                <form #formItem="ngForm" (ngSubmit)="onSaveItem(formItem)">
+                <form name="formItem" #formItem="ngForm" (ngSubmit)="onSaveItem(formItem)">
                     <input type="hidden" name="id" [(ngModel)]="this.dataApi.selectedItem.id">
                     <input type="hidden" name="userUid" [value]="userUid">
                     <div class="form-group">
@@ -45,7 +45,7 @@
                         <textarea class="form-control" name="characteristics" [(ngModel)]="this.dataApi.selectedItem.characteristics"></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cerrar</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseModal(formItem)" #btnClose>Cerrar</button>
                         <button type="submit" class="btn btn-primary">
                                 {{!this.dataApi.selectedItem.id ? 'Agregar' : 'Actualizar'}}
                         </button>

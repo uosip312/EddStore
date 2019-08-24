@@ -3,22 +3,26 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="ModalLabel">
-                    {{!this.userApi.selectedUser.id ? 'Nuevo Usuario' : 'Actualizar Usuario'}}
+                    {{!this.userApi.selectedUser.uid ? 'Nuevo Usuario' : 'Actualizar Usuario'}}
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
             <div class="modal-body">
-                <form #formUser="ngForm" (ngSubmit)="onSaveUser(formUser)">
-                    <input type="hidden" name="id" [(ngModel)]="this.userApi.selectedUser.id">
+                <form name="formUser" #formUser="ngForm" (ngSubmit)="onSaveUser(formUser)">
+                    <input type="hidden" name="id" [(ngModel)]="this.userApi.selectedUser.uid">
                     <div class="form-group">
                         <label for="name" class="col-form-label">Nombre</label>
-                        <input type="text" class="form-control" name="name" [(ngModel)]="this.userApi.selectedUser.name">
+                        <input type="text" class="form-control" name="name" [(ngModel)]="this.userApi.selectedUser.fullName">
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-form-label">eMail</label>
                         <input type="text" class="form-control" name="email" [(ngModel)]="this.userApi.selectedUser.email">
+                    </div>
+                    <div class="form-group">
+                        <label for="photoUrl" class="col-form-label">Url Foto</label>
+                        <input type="text" class="form-control" name="photoUrl" [(ngModel)]="this.userApi.selectedUser.photoUrl">
                     </div>
                     <div class="form-group">
                         <label for="offer">Rol</label>
@@ -29,9 +33,9 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" #btnClose>Cerrar</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseModal(formUser)" #btnClose>Cerrar</button>
                         <button type="submit" class="btn btn-primary">
-                                {{!this.userApi.selectedUser.id ? 'Agregar' : 'Actualizar'}}
+                                {{!this.userApi.selectedUser.uid ? 'Agregar' : 'Actualizar'}}
                         </button>
                     </div>
                 </form>
