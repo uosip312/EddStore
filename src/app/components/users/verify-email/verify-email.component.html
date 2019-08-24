@@ -1,0 +1,27 @@
+<section class="mb-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+                <div class="card_login">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form class="form-group">
+                                <h1 class="h3 mb-3 font-weight-normal">Gracias por registrarte</h1>
+                                <div class="form-group" *ngIf="authService.userData as user">
+                                    <p class="text-center">Hemos enviado un correo de confirmación a <strong>{{user.email}}</strong>.</p>
+                                    <p class="text-center">Por favor verifica tu correo y haz clic en link para verificar.</p>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block" (click)="authService.SendVerificationMail()">
+                                        <i class="fa fa-repeat"></i> Reenviar correo de confirmación
+                                </button>
+                                <div class="form-group">
+                                    <a routerLink="/user/login" class="form-control login-user">Ir atras? Iniciar Sesión</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
